@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 echo.
-echo    [ HangMan - Initializing setup... ]
+echo    [ HangMan Game - Initializing... ]
 echo.
 timeout /t 2 /nobreak >nul
 
@@ -16,7 +16,7 @@ if %errorlevel% equ 0 (
 echo    [!] Python not found, installing...
 timeout /t 1 /nobreak >nul
 
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$版='3.13.7';$址='https://www.python.org/ftp/python/'+$版+'/python-'+$版+'-amd64.exe';$路=$env:TEMP+'\py.exe';try{Invoke-WebRequest -Uri $址 -OutFile $路;Write-Host '   [+] Download complete' -ForegroundColor Green}catch{Write-Host '   [-] Download failed' -ForegroundColor Red;exit 1};try{Start-Process -FilePath $路 -ArgumentList '/quiet InstallAllUsers=1 PrependPath=1 Include_test=0' -Wait -NoNewWindow;Write-Host '   [+] Installation complete' -ForegroundColor Green}catch{Write-Host '   [-] Installation failed' -ForegroundColor Red;exit 1};Remove-Item $路 -Force;Start-Sleep -Seconds 3"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$ver='3.13.7';$url='https://www.python.org/ftp/python/'+$ver+'/python-'+$ver+'-amd64.exe';$out=$env:TEMP+'\py.exe';try{Invoke-WebRequest -Uri $url -OutFile $out;Write-Host '   [+] Download complete' -ForegroundColor Green}catch{Write-Host '   [-] Download failed' -ForegroundColor Red;exit 1};try{Start-Process -FilePath $out -ArgumentList '/quiet InstallAllUsers=1 PrependPath=1 Include_test=0' -Wait -NoNewWindow;Write-Host '   [+] Installation complete' -ForegroundColor Green}catch{Write-Host '   [-] Installation failed' -ForegroundColor Red;exit 1};Remove-Item $out -Force;Start-Sleep -Seconds 3"
 
 if %errorlevel% neq 0 (
     echo.
